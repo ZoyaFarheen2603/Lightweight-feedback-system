@@ -36,3 +36,164 @@
     transform: rotate(360deg);
   }
 }
+
+/* Modern color palette and backgrounds */
+body {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+/* AppBar and Toolbar */
+.MuiAppBar-root {
+  background: linear-gradient(90deg, #4f2ac3 60%, #6a82fb 100%);
+  box-shadow: 0 4px 24px rgba(79, 42, 195, 0.15);
+}
+.MuiToolbar-root {
+  min-height: 64px;
+}
+
+/* Main container */
+.dashboard-main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 40px 28px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(79, 42, 195, 0.13), 0 1.5px 8px rgba(0,0,0,0.07);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Feedback cards/accordion */
+.MuiAccordion-root {
+  border-radius: 16px !important;
+  margin-bottom: 22px !important;
+  box-shadow: 0 2px 16px rgba(106, 130, 251, 0.10);
+  background: rgba(255,255,255,0.95);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.MuiAccordion-root:hover {
+  box-shadow: 0 8px 32px rgba(106, 130, 251, 0.18);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Buttons */
+.MuiButton-root {
+  border-radius: 12px;
+  text-transform: none;
+  font-weight: 600;
+  font-size: 1.08em;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(106, 130, 251, 0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.MuiButton-root:hover {
+  box-shadow: 0 6px 24px rgba(252, 92, 125, 0.18);
+  transform: scale(1.05);
+}
+
+.MuiButton-outlined {
+  background: transparent;
+  color: #6a82fb;
+  border: 2px solid #6a82fb;
+}
+.MuiButton-outlined:hover {
+  background: #fbc2eb;
+  color: #4f2ac3;
+  border-color: #4f2ac3;
+}
+
+/* Chips */
+.MuiChip-root {
+  border-radius: 999px;
+  font-size: 1em;
+  /* background: linear-gradient(90deg, #fbc2eb 0%, #a18cd1 100%); */
+  color: #4f2ac3;
+  margin-right: 6px;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(161, 140, 209, 0.10);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.MuiChip-root:hover {
+  /* background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%); */
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* Dialogs */
+.MuiDialog-paper {
+  border-radius: 20px;
+  padding: 18px 0;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 8px 32px rgba(79, 42, 195, 0.13);
+  border: 1.5px solid #e0d7f3;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Table styling */
+.MuiTableContainer-root {
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(106, 130, 251, 0.10);
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6, .MuiTypography-h5 {
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  color: #4f2ac3;
+}
+
+.MuiTypography-h5 {
+  font-size: 2.1em !important;
+  margin-bottom: 18px !important;
+}
+
+.MuiTextField-root input, .MuiTextField-root textarea {
+  /* background: #f7f3ff; */
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1.08em;
+}
+.MuiTextField-root input:focus, .MuiTextField-root textarea:focus {
+  background: #fff;
+  /* border: 1.5px solid #6a82fb; */
+}
+
+.MuiInputLabel-root {
+  background: transparent !important;
+  z-index: 2;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  color: #888;
+  padding: 24px 0 8px 0;
+  font-size: 1em;
+  margin-top: 40px;
+}
+
+/* Misc */
+::-webkit-scrollbar {
+  width: 10px;
+  background: #fbc2eb;
+}
+::-webkit-scrollbar-thumb {
+  background: #a18cd1;
+  border-radius: 8px;
+}
+
+/* Soften the outline border color on focus for outlined TextFields */
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #d1c4e9 !important; /* Soft lavender */
+  transition: border-color 0.2s;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #b39ddb !important; /* Even softer on focus */
+  box-shadow: none !important;
+}
+
+/* (Notch hiding rule removed for proper outlined TextField appearance) */

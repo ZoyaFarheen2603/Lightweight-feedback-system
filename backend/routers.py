@@ -144,4 +144,13 @@ def add_comment(feedback_id: int, comment: FeedbackCommentCreate, current_user: 
 # Get comments for feedback
 @router.get("/feedback/{feedback_id}/comments", response_model=List[FeedbackCommentOut])
 def get_comments(feedback_id: int, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    return db.query(FeedbackComment).filter(FeedbackComment.feedback_id == feedback_id).order_by(FeedbackComment.created_at).all() 
+    return db.query(FeedbackComment).filter(FeedbackComment.feedback_id == feedback_id).order_by(FeedbackComment.created_at).all()
+
+@router.delete("/feedback/{feedback_id}", status_code=204)
+def delete_feedback(feedback_id: int, current_user: User = Depends(require_role(RoleEnum.manager)), db: Session = Depends(get_db)):
+    fb = db.query(Feedback).filter(Feedback.id == feedback_id, Feedback.manager_id == current_user.id).first()
+    if not fb:
+        raise HTTPException(status_code=404, detail="Feedback not found")
+    db.delete(fb)
+    db.commit()
+    return None 

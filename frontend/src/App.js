@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { SnackbarProvider } from 'notistack';
+import { AuthProvider } from './AuthContext';
 import LoginPage from './pages/LoginPage';
 import ManagerDashboard from './pages/ManagerDashboard';
 import EmployeeDashboard from './pages/EmployeeDashboard';
-import { AuthProvider } from './AuthContext';
-import PrivateRoute from './PrivateRoute';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
-import { SnackbarProvider } from 'notistack';
+import './App.css';
 
 const theme = createTheme({
   palette: {
@@ -25,7 +25,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true, error };
   }
   componentDidCatch(error, errorInfo) {
-    // You can log error info here if needed
+    console.error('ErrorBoundary caught:', error, errorInfo);
   }
   render() {
     if (this.state.hasError) {
@@ -39,22 +39,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SnackbarProvider maxSnack={3} autoHideDuration={3000} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+      <SnackbarProvider maxSnack={3}>
         <ErrorBoundary>
           <AuthProvider>
             <Router>
               <Routes>
+                <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/manager" element={
-                  <PrivateRoute role="manager">
-                    <ManagerDashboard />
-                  </PrivateRoute>
-                } />
-                <Route path="/employee" element={
-                  <PrivateRoute role="employee">
-                    <EmployeeDashboard />
-                  </PrivateRoute>
-                } />
+                <Route path="/manager" element={<ManagerDashboard />} />
+                <Route path="/employee" element={<EmployeeDashboard />} />
                 <Route path="*" element={<Navigate to="/login" />} />
               </Routes>
             </Router>
