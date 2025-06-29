@@ -11,6 +11,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { safeEnqueueSnackbar } from '../utils/safeSnackbar';
 import { safeText } from '../utils/safeText';
 import { useNavigate } from 'react-router-dom';
+import { config } from '../config';
 
 function EmployeeDashboard() {
   // All hooks at the top
@@ -37,7 +38,7 @@ function EmployeeDashboard() {
       setLoading(true);
       setError('');
       try {
-        const res = await axios.get(`http://localhost:8000/feedback/${user.user_id}`, {
+        const res = await axios.get(`${config.endpoints.feedback}/${user.user_id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFeedbackList(res.data);
@@ -72,7 +73,7 @@ function EmployeeDashboard() {
   const fetchComments = async (feedbackId) => {
     setCommentsLoading(c => ({ ...c, [feedbackId]: true }));
     try {
-      const res = await axios.get(`http://localhost:8000/feedback/${feedbackId}/comments`, {
+      const res = await axios.get(`${config.endpoints.comments}/${feedbackId}/comments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setComments(c => ({ ...c, [feedbackId]: res.data }));
@@ -83,11 +84,11 @@ function EmployeeDashboard() {
   const handleAcknowledge = async (feedbackId) => {
     setAckLoading(feedbackId);
     try {
-      await axios.post(`http://localhost:8000/feedback/${feedbackId}/acknowledge`, {}, {
+      await axios.post(`${config.endpoints.feedback}/${feedbackId}/acknowledge`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Refresh feedback list
-      const res = await axios.get(`http://localhost:8000/feedback/${user.user_id}`, {
+      const res = await axios.get(`${config.endpoints.feedback}/${user.user_id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFeedbackList(res.data);
@@ -102,7 +103,7 @@ function EmployeeDashboard() {
   const handleRequestFeedback = async () => {
     setRequestLoading(true);
     try {
-      await axios.post('http://localhost:8000/feedback-request', {
+      await axios.post(config.endpoints.feedbackRequests, {
         message: requestMsg,
         tags: requestTags.join(','),
       }, {
@@ -122,7 +123,7 @@ function EmployeeDashboard() {
   const handleAddComment = async (feedbackId) => {
     setCommentLoading(c => ({ ...c, [feedbackId]: true }));
     try {
-      await axios.post(`http://localhost:8000/feedback/${feedbackId}/comment`, {
+      await axios.post(`${config.endpoints.comments}/${feedbackId}/comment`, {
         comment: commentInputs[feedbackId],
       }, {
         headers: { Authorization: `Bearer ${token}` },

@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
+import { config } from '../config';
 
 function ManagerDashboard() {
   const { user, logout, token } = useAuth();
@@ -46,7 +47,7 @@ function ManagerDashboard() {
   const fetchTeamStats = async () => {
     setLoading(true); setError('');
     try {
-      const res = await axios.get('http://localhost:8000/dashboard/manager', {
+      const res = await axios.get(`${config.endpoints.dashboard}/manager`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTeamStats(res.data);
@@ -66,7 +67,7 @@ function ManagerDashboard() {
     (async () => {
       setRequestsLoading(true);
       try {
-        const res = await axios.get('http://localhost:8000/feedback-requests', {
+        const res = await axios.get(config.endpoints.feedbackRequests, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setRequests(res.data);
@@ -82,7 +83,7 @@ function ManagerDashboard() {
     setFeedbackLoading(true);
     setFeedbackError('');
     try {
-      const res = await axios.get(`http://localhost:8000/feedback/${member.id}`, {
+      const res = await axios.get(`${config.endpoints.feedback}/${member.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (latestSelectedId.current === member.id) {
@@ -104,7 +105,7 @@ function ManagerDashboard() {
 
     setFormLoading(true);
     try {
-      await axios.post('http://localhost:8000/feedback', {
+      await axios.post(config.endpoints.feedback, {
         ...form,
         employee_id: selectedMember.id,
         tags: formTags.join(',')
@@ -135,7 +136,7 @@ function ManagerDashboard() {
     setFulfillLoading(requestDialog.req.id);
     try {
       await axios.post(
-        `http://localhost:8000/feedback-request/${requestDialog.req.id}/fulfill`, {}, {
+        `${config.endpoints.feedbackRequests}/${requestDialog.req.id}/fulfill`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
@@ -156,7 +157,7 @@ function ManagerDashboard() {
   const handleConfirmDelete = async () => {
     if (!deleteDialog.feedbackId) return;
     try {
-      await axios.delete(`http://localhost:8000/feedback/${deleteDialog.feedbackId}`, {
+      await axios.delete(`${config.endpoints.feedback}/${deleteDialog.feedbackId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       enqueueSnackbar('Feedback deleted!', { variant: 'success' });
@@ -178,7 +179,7 @@ function ManagerDashboard() {
 
     setFormLoading(true);
     try {
-      await axios.put(`http://localhost:8000/feedback/${editDialog.feedback.id}`, {
+      await axios.put(`${config.endpoints.feedback}/${editDialog.feedback.id}`, {
         employee_id: editDialog.feedback.employee_id,
         strengths: editDialog.feedback.strengths,
         areas_to_improve: editDialog.feedback.areas_to_improve,

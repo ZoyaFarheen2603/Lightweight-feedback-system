@@ -5,6 +5,7 @@ import { Box, Button, TextField, Typography, Paper, CircularProgress } from '@mu
 import { useSnackbar } from 'notistack';
 import { safeEnqueueSnackbar } from '../utils/safeSnackbar';
 import { useAuth } from '../AuthContext';
+import { config } from '../config';
 //import { safeText } from '../utils/safeText';
 
 function LoginPage() {
@@ -32,7 +33,7 @@ function LoginPage() {
       const params = new URLSearchParams();
       params.append('username', email);
       params.append('password', password);
-      const res = await axios.post('http://localhost:8000/auth/login', params, {
+      const res = await axios.post(config.endpoints.login, params, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       });
       const { access_token } = res.data;

@@ -257,6 +257,33 @@ This is a demonstration project for a feedback system. The codebase is designed 
 
 This project is created for demonstration purposes.
 
+## 🤖 AI Assistance Disclosure
+
+This project was developed with AI assistance for the following specific purposes:
+
+### AI-Assisted Components:
+- **Code Generation**: Initial boilerplate code for FastAPI routes and React components
+- **Deployment Configuration**: Render.com deployment setup and environment configuration
+- **Documentation**: Help with README structure and API documentation
+- **Bug Fixes**: Assistance with debugging specific issues during development
+
+### Independent Work:
+- **Architecture Design**: All system design decisions and database schema
+- **Feature Implementation**: Core business logic and user workflows
+- **UI/UX Design**: Visual design choices and user experience decisions
+- **Security Implementation**: Authentication and authorization logic
+- **Testing Strategy**: Test cases and validation approaches
+
+### Learning Outcomes:
+The development process involved:
+- Understanding and modifying AI-generated code
+- Implementing custom business logic
+- Debugging and optimizing performance
+- Deploying and configuring production environments
+- Comprehensive testing and validation
+
+All code has been thoroughly reviewed, understood, and customized to meet the specific requirements of this feedback system.
+
 ---
 
-**Note**: This project was built with AI assistance for code generation, but all design decisions, architecture choices, and implementation details were carefully reviewed and understood before integration.
+**Note**: This project demonstrates the effective use of AI as a development tool while maintaining full understanding and control over the implementation.
