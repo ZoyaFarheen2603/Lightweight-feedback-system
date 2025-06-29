@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 # Mount React build static files
-app.mount("/static", StaticFiles(directory="../frontend/build/static"), name="static")
+#app.mount("/static", StaticFiles(directory="../frontend/build/static"), name="static")
 
 # Include your API routes
 app.include_router(router)

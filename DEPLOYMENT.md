@@ -7,8 +7,8 @@ This guide will help you deploy your feedback system to Render.com.
 ### Option 1: Deploy to Render.com (Recommended)
 
 1. **Create a Render Account**
-   - Go to [render.com](https://render.com)
-   - Sign up for an account (requires credit card for starter plans)
+   - Go to [render.com](rehttps://render.com)
+   - Sign up for an account 
 
 2. **Connect Your Repository**
    - Click "New +" → "Blueprint"
