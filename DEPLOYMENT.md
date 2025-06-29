@@ -1,6 +1,6 @@
 # Deployment Guide - Lightweight Feedback System
 
-This guide will help you deploy your feedback system to Render.com for free.
+This guide will help you deploy your feedback system to Render.com.
 
 ## 🚀 Quick Deployment Steps
 
@@ -8,7 +8,7 @@ This guide will help you deploy your feedback system to Render.com for free.
 
 1. **Create a Render Account**
    - Go to [render.com](https://render.com)
-   - Sign up for a free account (no credit card required)
+   - Sign up for an account (requires credit card for starter plans)
 
 2. **Connect Your Repository**
    - Click "New +" → "Blueprint"
@@ -34,6 +34,7 @@ If the blueprint doesn't work, deploy services manually:
 3. Configure:
    - **Name**: `feedback-backend`
    - **Environment**: `Python`
+   - **Plan**: `Starter` ($7/month)
    - **Build Command**: 
      ```bash
      cd backend && pip install -r requirements.txt && alembic upgrade head && python seed.py
@@ -52,6 +53,7 @@ If the blueprint doesn't work, deploy services manually:
 2. Connect your repository
 3. Configure:
    - **Name**: `feedback-frontend`
+   - **Plan**: `Starter` ($7/month)
    - **Build Command**: 
      ```bash
      cd frontend && npm install && npm run build
@@ -62,13 +64,19 @@ If the blueprint doesn't work, deploy services manually:
 
 ## 🔧 Alternative Deployment Options
 
-### Railway.app
+### Railway.app (Free Tier Available)
 1. Go to [railway.app](https://railway.app)
 2. Connect your repository
 3. Deploy both services using the same configuration
+4. **Free tier**: $5 credit monthly
 
 ### Vercel + Railway
-- **Frontend**: Deploy to Vercel
+- **Frontend**: Deploy to Vercel (free tier available)
+- **Backend**: Deploy to Railway
+- Update `REACT_APP_API_URL` to point to Railway backend
+
+### Netlify + Railway
+- **Frontend**: Deploy to Netlify (free tier available)
 - **Backend**: Deploy to Railway
 - Update `REACT_APP_API_URL` to point to Railway backend
 
@@ -119,16 +127,18 @@ After deployment, you can test with these accounts:
 curl https://your-backend-name.onrender.com/
 ```
 
-## 📊 Performance Notes
+## 📊 Pricing Information
 
-- **Free Tier Limits**: 
-  - Render: 750 hours/month per service
-  - Services sleep after 15 minutes of inactivity
-  - First request may take 30-60 seconds to wake up
+### Render.com
+- **Starter Plan**: $7/month per service
+- **Free Tier**: No longer available for web services
+- **Static Sites**: May still have free tier
 
-- **Database**: SQLite file is stored in the container
-  - Data persists between deployments
-  - Consider PostgreSQL for production use
+### Alternative Free Options
+- **Railway**: $5 credit monthly (free tier)
+- **Vercel**: Free tier for frontend
+- **Netlify**: Free tier for frontend
+- **Heroku**: Free tier discontinued
 
 ## 🔐 Security Considerations
 
