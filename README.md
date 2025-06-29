@@ -118,18 +118,23 @@ The frontend will be available at `http://localhost:3000`
 ## 👥 Test Users
 
 ### Manager Account
-- **Email**: manager@company.com
-- **Password**: manager123
-- **Role**: Manager
+- **Name:** Alice Manager
+- **Email:** manager@example.com
+- **Password:** managerpass
+- **Role:** Manager
 
 ### Employee Accounts
-- **Email**: employee1@company.com
-- **Password**: employee123
-- **Role**: Employee
+- **Name:** Bob Employee
+- **Email:** bob@example.com
+- **Password:** bobpass
+- **Role:** Employee
+- **Manager:** Alice Manager (manager@example.com)
 
-- **Email**: employee2@company.com
-- **Password**: employee123
-- **Role**: Employee
+- **Name:** Carol Employee
+- **Email:** carol@example.com
+- **Password:** carolpass
+- **Role:** Employee
+- **Manager:** Alice Manager (manager@example.com)
 
 ## 📋 API Endpoints
 
