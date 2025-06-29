@@ -5,11 +5,13 @@
 - **Frontend:** [https://lightweight-feedback-system.onrender.com](https://lightweight-feedback-system.onrender.com)
 - **Backend:** [https://feedback-backend-0sji.onrender.com](https://feedback-backend-0sji.onrender.com)
 
+## 🎯 Project Overview
+
 A modern, secure feedback management system for internal team communication between managers and employees. Built with Python FastAPI backend and React frontend.
 
-## 🌟 Features
+## ✨ Key Features
 
-### ✅ Core Features (MVP)
+### Core Features (MVP)
 - **Authentication & Roles**: Manager and Employee roles with JWT authentication
 - **Feedback Submission**: Managers can submit structured feedback with strengths, areas to improve, and sentiment
 - **Feedback Visibility**: Role-based access control - employees see only their feedback
@@ -47,14 +49,14 @@ A modern, secure feedback management system for internal team communication betw
 - **Database**: SQLite (development)
 - **API Documentation**: FastAPI auto-generated docs
 
-## 🚀 Quick Start
+## 🚀 Quick Start & Deployment
 
 ### Prerequisites
 - Python 3.8+
 - Node.js 16+
-- Docker (for backend deployment)
+- Docker (optional, for backend deployment)
 
-### Backend Setup
+### Local Development
 
 1. **Navigate to backend directory:**
    ```bash
@@ -83,8 +85,6 @@ A modern, secure feedback management system for internal team communication betw
 
 The backend will be available at `http://localhost:8000`
 
-### Frontend Setup
-
 1. **Navigate to frontend directory:**
    ```bash
    cd frontend
@@ -102,7 +102,7 @@ The backend will be available at `http://localhost:8000`
 
 The frontend will be available at `http://localhost:3000`
 
-### Docker Setup (Backend)
+### Docker Development
 
 1. **Build the Docker image:**
    ```bash
@@ -114,6 +114,23 @@ The frontend will be available at `http://localhost:3000`
    ```bash
    docker run -p 8000:8000 feedback-backend
    ```
+
+### Docker Development
+
+```bash
+docker-compose up --build
+```
+
+### Render Deployment
+
+1. Push code to GitHub/GitLab
+2. Go to [render.com](https://render.com)
+3. Create account and add payment method
+4. Click "New +" → "Blueprint"
+5. Connect repository
+6. Click "Apply" to deploy
+
+**Deployment Time:** ~5-10 minutes
 
 ## 👥 Test Users
 
@@ -156,6 +173,90 @@ The frontend will be available at `http://localhost:3000`
 ### Comments
 - `POST /feedback/{feedback_id}/comment` - Add a comment to a feedback item (Markdown supported)
 - `GET /feedback/{feedback_id}/comments` - Get all comments for a feedback item
+
+### Dashboard
+- `GET /dashboard/manager` - Manager dashboard stats
+- `GET /team` - Get team members (Manager only)
+
+## 🏗️ Architecture Highlights
+
+### Security
+- JWT authentication with role-based access
+- Environment variable configuration
+- Input validation with Pydantic schemas
+- SQL injection protection via SQLAlchemy ORM
+
+### Frontend
+- Responsive Material-UI design
+- Context API for state management
+- Protected routes with role-based access
+- Error boundaries and loading states
+
+### Backend
+- RESTful API design
+- Database migrations with Alembic
+- CORS configuration for cross-origin requests
+- Comprehensive error handling
+
+## 📁 Project Structure
+
+```
+Lightweight-feedback-system/
+├── backend/                 # FastAPI backend
+│   ├── main.py             # FastAPI app entry point
+│   ├── models.py           # SQLAlchemy models
+│   ├── routers.py          # API routes
+│   ├── auth.py             # Authentication logic
+│   ├── database.py         # Database configuration
+│   ├── schemas.py          # Pydantic schemas
+│   ├── requirements.txt    # Python dependencies
+│   └── alembic/            # Database migrations
+├── frontend/               # React frontend
+│   ├── src/
+│   │   ├── pages/          # React components
+│   │   ├── AuthContext.js  # Authentication context
+│   │   ├── config.js       # API configuration
+│   │   └── App.js          # Main app component
+│   ├── package.json        # Node.js dependencies
+│   └── public/             # Static assets
+├── render.yaml             # Render deployment config
+├── docker-compose.yml      # Local development
+└── DEPLOYMENT.md           # Deployment guide
+```
+
+## 🔧 Development & Code Style
+
+- **Python:** Follows PEP 8 guidelines
+- **JavaScript:** Uses ES6+ features and consistent formatting
+- **Components:** Functional components with hooks
+- **Extensibility:** Modular and clean codebase
+
+## 🔐 Security Features
+
+- JWT token authentication
+- Role-based access control
+- Input validation and sanitization
+- CORS configuration
+- Environment variable management
+- SQL injection protection
+
+## 🎨 UI/UX Features
+
+- Modern Material-UI design
+- Responsive layout
+- Loading states and error handling
+- Toast notifications
+- Confirmation dialogs
+- Markdown support for comments
+
+## 📈 Future Enhancements
+
+- Real-time notifications (WebSocket)
+- File uploads for feedback
+- Advanced analytics dashboard
+- Email notifications
+- Mobile app (React Native)
+- Multi-tenant support
 
 ## 🤖 AI Assistance Disclosure
 
