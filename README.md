@@ -154,4 +154,10 @@ The frontend will be available at `http://localhost:3000`
 - `POST /feedback-request/{request_id}/fulfill` - Mark request fulfilled (Manager only)
 
 ### Comments
-- `
+- `POST /feedback/{feedback_id}/comment` - Add a comment to a feedback item (Markdown supported)
+- `GET /feedback/{feedback_id}/comments` - Get all comments for a feedback item
+
+## 🤖 AI Assistance Disclosure
+
+> **Note:**
+> AI assistance was used only for a few specific purposes, such as code generation for boilerplate, deployment configuration, and some documentation help. All core logic, architecture, feature implementation, and design decisions were done independently.
