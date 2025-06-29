@@ -247,11 +247,11 @@ function ManagerDashboard() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {requests.map(req => (
+                  {(Array.isArray(requests) ? requests : []).map(req => (
                     <TableRow key={req.id}>
                       <TableCell>
                         {String(
-                          (teamStats.find(m => m.id === req.employee_id)?.name)
+                          (Array.isArray(teamStats) ? teamStats : []).find(m => m.id === req.employee_id)?.name
                           ?? req.employee_id
                         )}
                       </TableCell>
@@ -300,7 +300,7 @@ function ManagerDashboard() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Array.isArray(teamStats) && teamStats.length > 0 && teamStats.map(member => (
+                {(Array.isArray(teamStats) ? teamStats : []).length > 0 && (Array.isArray(teamStats) ? teamStats : []).map(member => (
                   <TableRow key={member.id} selected={selectedMember?.id === member.id}>
                     <TableCell>{String(member.name)}</TableCell>
                     <TableCell>{String(member.email)}</TableCell>
@@ -350,7 +350,7 @@ function ManagerDashboard() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {feedbackList.map(fb => (
+                    {(Array.isArray(feedbackList) ? feedbackList : []).map(fb => (
                       <TableRow key={fb.id}>
                         <TableCell>{fb.created_at ? new Date(fb.created_at).toLocaleString() : '-'}</TableCell>
                         <TableCell>{String(fb.strengths)}</TableCell>
